@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +24,30 @@
         .label { font-size: 0.75rem; font-weight: bold; color: var(--accent); text-transform: uppercase; margin-bottom: 4px; display: block; }
         .data-line { font-size: 1.25rem; font-weight: bold; }
 
-        .btn-next { width: 100%; padding: 20px; background: var(--accent); color: white; border: none; border-radius: 15px; font-size: 1.4rem; font-weight: bold; cursor: pointer; margin-bottom: 40px; }
+        .btn-next {
+            width: 80px;
+            height: 80px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%; /* Faz o botão ficar redondo */
+            font-size: 2.5rem;   /* Tamanho do ícone */
+            cursor: pointer;
+            margin: 0 auto 40px; /* Centraliza o botão */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .btn-next:hover {
+            transform: scale(1.1) rotate(15deg); /* Dá um leve giro ao passar o mouse */
+        }
+
+        .btn-next:active {
+            transform: scale(0.9); /* Efeito de clique */
+        }
 
         /* Seções de Grade */
         h2 { border-left: 8px solid var(--primary); padding-left: 15px; margin: 50px 0 20px; font-size: 1.8rem; }
@@ -68,7 +92,9 @@
             </div>
         </div>
     </div>
-    <button class="btn-next" onclick="nextCard()">SORTEAR PRÓXIMO KANJI</button>
+    <button class="btn-next" onclick="nextCard()" title="Sortear Próximo">
+        <i class="fa-solid fa-dice-six"></i>
+    </button>
 
     <h2 id="t-week">Dias da Semana</h2>
     <div class="grid" id="grid-week"></div>
