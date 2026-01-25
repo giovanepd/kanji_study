@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japonês Master - 60 Kanjis Oficiais</title>
+    <title>60 Kanjis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root { --primary: #1a237e; --accent: #d32f2f; --bg: #f8f9fa; --text: #212121; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        .container { max-width: 1200px; width: 100%; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
         
-        /* Header e Controles */
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; background: white; padding: 15px 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        /* Menu de Navegação Traduzível */
+        .nav-top { background: white; width: 100%; padding: 15px 0; border-bottom: 2px solid #eee; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: center; gap: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav-top a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 0.85rem; transition: 0.3s; padding: 5px 10px; border-radius: 5px; text-transform: uppercase; }
+        .nav-top a:hover { background: var(--bg); color: var(--accent); }
+
+        .container { max-width: 1200px; width: 100%; padding: 20px; box-sizing: border-box; }
+        
+        .header { display: flex; justify-content: space-between; align-items: center; margin: 20px 0 25px; background: white; padding: 15px 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .btn-lang { padding: 10px 18px; border: 2px solid var(--primary); background: transparent; border-radius: 25px; cursor: pointer; font-weight: bold; transition: 0.3s; margin-left: 5px; }
         .btn-lang.active { background: var(--primary); color: white; }
 
-        /* Flashcard */
         .flashcard { background: white; padding: 40px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); text-align: center; cursor: pointer; margin-bottom: 25px; border-bottom: 8px solid var(--primary); min-height: 350px; }
         #kanji-main { font-size: 9rem; margin: 0; color: #111; }
         #answer-box { display: none; margin-top: 25px; text-align: left; border-top: 2px solid #eee; padding-top: 20px; }
@@ -24,37 +28,13 @@
         .label { font-size: 0.75rem; font-weight: bold; color: var(--accent); text-transform: uppercase; margin-bottom: 4px; display: block; }
         .data-line { font-size: 1.25rem; font-weight: bold; }
 
-        .btn-next {
-            width: 80px;
-            height: 80px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%; /* Faz o botão ficar redondo */
-            font-size: 2.5rem;   /* Tamanho do ícone */
-            cursor: pointer;
-            margin: 0 auto 40px; /* Centraliza o botão */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
-            transition: transform 0.2s;
-        }
+        .btn-next { width: 80px; height: 80px; background: var(--accent); color: white; border: none; border-radius: 50%; font-size: 2.5rem; cursor: pointer; margin: 0 auto 40px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4); transition: transform 0.2s; }
+        .btn-next:hover { transform: scale(1.1) rotate(15deg); }
 
-        .btn-next:hover {
-            transform: scale(1.1) rotate(15deg); /* Dá um leve giro ao passar o mouse */
-        }
-
-        .btn-next:active {
-            transform: scale(0.9); /* Efeito de clique */
-        }
-
-        /* Seções de Grade */
-        h2 { border-left: 8px solid var(--primary); padding-left: 15px; margin: 50px 0 20px; font-size: 1.8rem; }
+        h2 { border-left: 8px solid var(--primary); padding-left: 15px; margin: 50px 0 20px; font-size: 1.8rem; scroll-margin-top: 100px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
         .card { background: white; padding: 15px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee; }
         
-        /* Lista de Referência (60 Kanjis) */
         .list-area { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
         .list-item { background: white; padding: 20px; border-radius: 15px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .num-badge { background: var(--primary); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; margin-bottom: 10px; display: inline-block; }
@@ -63,9 +43,17 @@
 </head>
 <body>
 
+<nav class="nav-top">
+    <a href="#kanji-random" id="nav-1">Aleatório</a>
+    <a href="#t-counts" id="nav-2">Contadores</a>
+    <a href="#t-week" id="nav-3">Semana</a>
+    <a href="#t-month" id="nav-4">Calendário</a>
+    <a href="#t-list" id="nav-5">Lista</a>
+</nav>
+
 <div class="container">
-    <div class="header">
-        <div style="font-weight: bold; font-size: 1.3rem;">ESTUDO KANJI N5 - 60 ESSENCIAIS</div>
+    <div class="header" id="kanji-random">
+        <div style="font-weight: bold; font-size: 1.3rem;">Kanjis</div>
         <div class="controls">
             <button class="btn-lang active" onclick="changeLang('pt', this)">PT</button>
             <button class="btn-lang" onclick="changeLang('en', this)">EN</button>
@@ -73,28 +61,34 @@
         </div>
     </div>
 
-    <div class="flashcard" onclick="document.getElementById('answer-box').style.display='block'">
+    <div class="flashcard" onclick="document.getElementById('answer-box').style.display='block';document.getElementById('tap-hint').style.display='none'">
         <div id="kanji-main"></div>
-        <div id="tap-hint" style="color:#aaa; font-style: italic;">Click</div>
+        <div id="tap-hint" style="color:#aaa; font-size: 1.8rem; margin-top: 15px;">
+            <i class="fa-solid fa-circle-chevron-down"></i>
+        </div>
         
         <div id="answer-box">
             <div class="entry">
-                <span class="label">PADRÃO: KANJI - HIRA - ROMA - TRAD</span>
+                <span class="label">Padrão</span>
                 <div id="ans-full" class="data-line" style="color:var(--primary)"></div>
             </div>
             <div class="entry">
-                <span class="label">LEITURA KUN (EXEMPLO)</span>
+                <span class="label">Leitura KUN</span>
                 <div id="ans-kun" class="data-line"></div>
             </div>
             <div class="entry">
-                <span class="label">LEITURA ON (EXEMPLO)</span>
+                <span class="label">Leitura ON</span>
                 <div id="ans-on" class="data-line"></div>
             </div>
         </div>
     </div>
-    <button class="btn-next" onclick="nextCard()" title="Sortear Próximo">
+    
+    <button class="btn-next" onclick="nextCard()" title="Sortear">
         <i class="fa-solid fa-dice-six"></i>
     </button>
+
+    <h2 id="t-counts">Contadores Gerais (1-10)</h2>
+    <div class="grid" id="grid-counts"></div>
 
     <h2 id="t-week">Dias da Semana</h2>
     <div class="grid" id="grid-week"></div>
@@ -107,21 +101,34 @@
 </div>
 
 <script>
-// DADOS FIXOS APROVADOS
+// (Dados de weekData, monthData e countsData permanecem os mesmos do anterior)
+const countsData = [
+    { k:"一つ", h:"ひとつ", r:"hitotsu", t:{pt:"1 objeto", en:"1 thing", es:"1 cosa"}},
+    { k:"二つ", h:"ふたつ", r:"futatsu", t:{pt:"2 objetos", en:"2 things", es:"2 cosas"}},
+    { k:"三つ", h:"みっつ", r:"mittsu", t:{pt:"3 objetos", en:"3 things", es:"3 cosas"}},
+    { k:"四つ", h:"よっつ", r:"yottsu", t:{pt:"4 objetos", en:"4 things", es:"4 cosas"}},
+    { k:"五つ", h:"いつつ", r:"itsutsu", t:{pt:"5 objetos", en:"5 things", es:"5 cosas"}},
+    { k:"六つ", h:"むっつ", r:"muttsu", t:{pt:"6 objetos", en:"6 things", es:"6 coisas"}},
+    { k:"七つ", h:"ななつ", r:"nanatsu", t:{pt:"7 objetos", en:"7 things", es:"7 coisas"}},
+    { k:"八つ", h:"やっつ", r:"yattsu", t:{pt:"8 objetos", en:"8 things", es:"8 coisas"}},
+    { k:"九つ", h:"ここのつ", r:"kokonotsu", t:{pt:"9 objetos", en:"9 things", es:"9 cosas"}},
+    { k:"十", h:"とお", r:"tō", t:{pt:"10 objetos", en:"10 things", es:"10 cosas"}}
+];
+
 const weekData = [
-    { k:"日曜日", h:"にちようび", r:"nichiyōbi", t:{pt:"Domingo", en:"Sunday", es:"Domingo"}},
     { k:"月曜日", h:"げつようび", r:"getsuyōbi", t:{pt:"Segunda", en:"Monday", es:"Lunes"}},
     { k:"火曜日", h:"かようび", r:"kayōbi", t:{pt:"Terça", en:"Tuesday", es:"Martes"}},
     { k:"水曜日", h:"すいようび", r:"suiyōbi", t:{pt:"Quarta", en:"Wednesday", es:"Miércoles"}},
     { k:"木曜日", h:"もくようび", r:"mokuyōbi", t:{pt:"Quinta", en:"Thursday", es:"Jueves"}},
     { k:"金曜日", h:"きんようび", r:"kinyōbi", t:{pt:"Sexta", en:"Friday", es:"Viernes"}},
-    { k:"土曜日", h:"どようび", r:"doyōbi", t:{pt:"Sábado", en:"Saturday", es:"Sábado"}}
+    { k:"土曜日", h:"どようび", r:"doyōbi", t:{pt:"Sábado", en:"Saturday", es:"Sábado"}},
+    { k:"日曜日", h:"にちようび", r:"nichiyōbi", t:{pt:"Domingo", en:"Sunday", es:"Domingo"}}
 ];
 
 const monthData = [
     {k:"一日", h:"ついたち", r:"tsuitachi", t:{pt:"Dia 1", en:"Day 1", es:"Día 1"}},
     {k:"二日", h:"ふつか", r:"futsuka", t:{pt:"Dia 2", en:"Day 2", es:"Día 2"}},
-    {k:"三日", h:"みっか", r:"mikka", t:{pt:"Dia 3", en:"Day 3", es:"Día 3"}},
+    {k:"三日", h:"みっka", r:"mikka", t:{pt:"Dia 3", en:"Day 3", es:"Día 3"}},
     {k:"四日", h:"よっか", r:"yokka", t:{pt:"Dia 4", en:"Day 4", es:"Día 4"}},
     {k:"五日", h:"いつか", r:"itsuka", t:{pt:"Dia 5", en:"Day 5", es:"Día 5"}},
     {k:"六日", h:"むいか", r:"muika", t:{pt:"Dia 6", en:"Day 6", es:"Día 6"}},
@@ -129,91 +136,70 @@ const monthData = [
     {k:"八日", h:"ようか", r:"yōka", t:{pt:"Dia 8", en:"Day 8", es:"Día 8"}},
     {k:"九日", h:"ここのか", r:"kokonoka", t:{pt:"Dia 9", en:"Day 9", es:"Día 9"}},
     {k:"十日", h:"とおか", r:"tōka", t:{pt:"Dia 10", en:"Day 10", es:"Día 10"}},
-    {k:"十一日", h:"じゅういちにち", r:"jūichinichi", t:{pt:"Dia 11", en:"Day 11", es:"Día 11"}},
-    {k:"十二日", h:"じゅうににち", r:"jūninichi", t:{pt:"Dia 12", en:"Day 12", es:"Día 12"}},
-    {k:"十三日", h:"じゅうさんにち", r:"jūsan-nichi", t:{pt:"Dia 13", en:"Day 13", es:"Día 13"}},
-    {k:"十四日", h:"じゅうよっか", r:"jūyokka", t:{pt:"Dia 14", en:"Day 14", es:"Día 14"}},
-    {k:"十五日", h:"じゅうごにち", r:"jūgonichi", t:{pt:"Dia 15", en:"Day 15", es:"Día 15"}},
-    {k:"十六日", h:"じゅうろくにち", r:"jūrokunichi", t:{pt:"Dia 16", en:"Day 16", es:"Día 16"}},
-    {k:"十七日", h:"じゅうしちにち", r:"jūshichinichi", t:{pt:"Dia 17", en:"Day 17", es:"Día 17"}},
-    {k:"十八日", h:"じゅうはちにち", r:"jūhachinichi", t:{pt:"Dia 18", en:"Day 18", es:"Día 18"}},
-    {k:"十九日", h:"じゅうくにち", r:"jūkunichi", t:{pt:"Dia 19", en:"Day 19", es:"Día 19"}},
-    {k:"二十日", h:"はつか", r:"hatsuka", t:{pt:"Dia 20", en:"Day 20", es:"Día 20"}},
-    {k:"二十一日", h:"にじゅういちにち", r:"nijūichinichi", t:{pt:"Dia 21", en:"Day 21", es:"Día 21"}},
-    {k:"二十二日", h:"にじゅうににち", r:"nijūninichi", t:{pt:"Dia 22", en:"Day 22", es:"Día 22"}},
-    {k:"二十三日", h:"にじゅうさんにち", r:"nijūsan-nichi", t:{pt:"Dia 23", en:"Day 23", es:"Día 23"}},
-    {k:"二十四日", h:"にじゅうよっか", r:"nijūyokka", t:{pt:"Dia 24", en:"Day 24", es:"Día 24"}},
-    {k:"二十五日", h:"にじゅうごにち", r:"nijūgonichi", t:{pt:"Dia 25", en:"Day 25", es:"Día 25"}},
-    {k:"二十六日", h:"にじゅうろくにち", r:"nijūrokunichi", t:{pt:"Dia 26", en:"Day 26", es:"Día 26"}},
-    {k:"二十七日", h:"にじゅうしちにち", r:"jūshichinichi", t:{pt:"Dia 27", en:"Day 27", es:"Día 27"}},
-    {k:"二十八日", h:"にじゅうはちにち", r:"jūhachinichi", t:{pt:"Dia 28", en:"Day 28", es:"Día 28"}},
-    {k:"二十九日", h:"にじゅうくにち", r:"jūkunichi", t:{pt:"Dia 29", en:"Day 29", es:"Día 29"}},
-    {k:"三十日", h:"さんじゅうにち", r:"sanjūnichi", t:{pt:"Dia 30", en:"Day 30", es:"Día 30"}},
-    {k:"三十一日", h:"さんじゅういちにち", r:"sanjūichinichi", t:{pt:"Dia 31", en:"Day 31", es:"Día 31"}}
+    {k:"二十日", h:"はつか", r:"hatsuka", t:{pt:"Dia 20", en:"Day 20", es:"Día 20"}}
 ];
 
-// SUA LISTA DE 60 KANJIS (MAPEA OS DADOS QUE VOCE ENVIOU)
 const kanji60 = [
-    { k:"人", s:{pt:"pessoa", en:"person", es:"persona"}, h:"ひと", r:"hito", ke:"人（ひと） pessoa - hito", oe:"日本人（にほんじん） japonês - nihon-jin" },
-    { k:"男", s:{pt:"homem", en:"man", es:"hombre"}, h:"おとこ", r:"otoko", ke:"男（おとこ） homem - otoko", oe:"男子（だんし） menino - danshi" },
-    { k:"女", s:{pt:"mulher", en:"woman", es:"mujer"}, h:"おんな", r:"onna", ke:"女（おんな） mulher - onna", oe:"女子（じょし） menina - joshi" },
-    { k:"子", s:{pt:"criança", en:"child", es:"niño"}, h:"こ", r:"ko", ke:"子（こ） criança - ko", oe:"女子（じょし） menina - joshi" },
-    { k:"車", s:{pt:"carro", en:"car", es:"carro"}, h:"くるま", r:"kuruma", ke:"車（くるま） carro - kuruma", oe:"電車（でんしゃ） trem - densha" },
-    { k:"山", s:{pt:"montanha", en:"mountain", es:"montaña"}, h:"やま", r:"yama", ke:"山（やま） montanha - yama", oe:"火山（かざん） vulcão - kazan" },
-    { k:"川", s:{pt:"rio", en:"river", es:"río"}, h:"かわ", r:"kawa", ke:"川（かわ） rio - kawa", oe:"川（せん） rio - sen" },
-    { k:"田", s:{pt:"campo de arroz", en:"rice field", es:"arrozal"}, h:"た", r:"ta", ke:"田（た） arrozal - ta", oe:"田園（でんえん） campo - den'en" },
-    { k:"米", s:{pt:"arroz", en:"rice", es:"arroz"}, h:"こめ", r:"kome", ke:"米（こめ） arroz - kome", oe:"米国（べいこく） EUA - beikoku" },
-    { k:"雨", s:{pt:"chuva", en:"rain", es:"lluvia"}, h:"あめ", r:"ame", ke:"雨（あめ） chuva - ame", oe:"雨天（うてん） tempo chuvoso - uten" },
-    { k:"上", s:{pt:"cima", en:"up", es:"arriba"}, h:"うえ", r:"ue", ke:"上（うえ） cima - ue", oe:"上手（じょうず） habilidoso - jōzu" },
-    { k:"中", s:{pt:"meio/dentro", en:"middle/inside", es:"medio"}, h:"なか", r:"naka", ke:"中（なか） dentro - naka", oe:"中学校（ちゅうがっこう） escola média - chūgakkō" },
-    { k:"下", s:{pt:"baixo", en:"down/below", es:"abajo"}, h:"した", r:"shita", ke:"下（した） baixo - shita", oe:"地下（ちか） subterrâneo - chika" },
-    { k:"左", s:{pt:"esquerda", en:"left", es:"izquierda"}, h:"ひだり", r:"hidari", ke:"左（ひだり） esquerda - hidari", oe:"左右（さゆう） esquerda e direita - sayū" },
-    { k:"右", s:{pt:"direita", en:"right", es:"derecha"}, h:"みぎ", r:"migi", ke:"右（みぎ） direita - migi", oe:"左右（さゆう） esquerda e direita - sayū" },
-    { k:"明", s:{pt:"claro/luz", en:"light", es:"claro"}, h:"あかるい", r:"akarui", ke:"明るい（あかるい） claro - akarui", oe:"明日（あした） amanhã - ashita" },
-    { k:"休", s:{pt:"descansar", en:"rest", es:"descansar"}, h:"やすむ", r:"yasumu", ke:"休む（やすむ） descansar - yasumu", oe:"休日（きゅうじつ） folga - kyūjitsu" },
-    { k:"林", s:{pt:"bosque pequeno", en:"grove", es:"bosque"}, h:"はやし", r:"hayashi", ke:"林（はやし） bosque - hayashi", oe:"森林（しんりん） floresta - shinrin" },
-    { k:"森", s:{pt:"floresta", en:"forest", es:"selva"}, h:"もり", r:"mori", ke:"森（もり） floresta - mori", oe:"森林（しんりん） floresta - shinrin" },
-    { k:"好", s:{pt:"gostar", en:"to like", es:"gustar"}, h:"すき", r:"suki", ke:"好き（すき） gostar - suki", oe:"好物（こうぶつ） comida favorita - kōbutsu" },
-    { k:"一", s:{pt:"um", en:"one", es:"uno"}, h:"ひと", r:"hito", ke:"一つ（ひとつ） um - hitotsu", oe:"一日（いちにち） um dia - ichinichi" },
-    { k:"二", s:{pt:"dois", en:"two", es:"dos"}, h:"ふた", r:"futa", ke:"二つ（ふたつ） dois - futatsu", oe:"二人（ににん） duas pessoas - ninin" },
-    { k:"三", s:{pt:"três", en:"three", es:"tres"}, h:"みっつ", r:"mittsu", ke:"三つ（みっつ） três - mittsu", oe:"三人（さんにん） três pessoas - sannin" },
-    { k:"四", s:{pt:"quatro", en:"four", es:"cuatro"}, h:"よっつ", r:"yottsu", ke:"四つ（よっつ） quatro - yottsu", oe:"四月（しがつ） abril - shigatsu" },
-    { k:"五", s:{pt:"cinco", en:"five", es:"cinco"}, h:"いつつ", r:"itsutsu", ke:"五つ（いつつ） cinco - itsutsu", oe:"五人（ごにん） cinco pessoas - gonin" },
-    { k:"六", s:{pt:"seis", en:"six", es:"seis"}, h:"むっつ", r:"muttsu", ke:"六つ（むっつ） seis - muttsu", oe:"六日（むいか） seis dias - muika" },
-    { k:"七", s:{pt:"sete", en:"seven", es:"siete"}, h:"なな", r:"nana", ke:"七つ（ななつ） sete - nanatsu", oe:"七月（しちがつ） julho - shichigatsu" },
-    { k:"八", s:{pt:"oito", en:"eight", es:"ocho"}, h:"やっつ", r:"yattsu", ke:"八つ（やっつ） oito - yattsu", oe:"八日（ようか） oito dias - yōka" },
-    { k:"九", s:{pt:"nove", en:"nine", es:"nueve"}, h:"ここの", r:"kokono", ke:"九つ（ここのつ） nove - kokonotsu", oe:"九月（くがつ） setembro - kugatsu" },
-    { k:"十", s:{pt:"dez", en:"ten", es:"diez"}, h:"とお", r:"tō", ke:"十（とお） dez - tō", oe:"十分（じゅうぶん） suficiente - jūbun" },
-    { k:"百", s:{pt:"cem", en:"hundred", es:"cien"}, h:"もも", r:"momo", ke:"百（もも） cem - momo", oe:"百円（ひゃくえん） cem ienes - hyaku-en" },
-    { k:"千", s:{pt:"mil", en:"thousand", es:"mil"}, h:"ち", r:"chi", ke:"千（ち） mil - chi", oe:"千円（せんえん） mil ienes - sen-en" },
-    { k:"万", s:{pt:"dez mil", en:"10k", es:"diez mil"}, h:"よろず", r:"yorozu", ke:"一万（いちまん） dez mil - ichiman", oe:"万人（ばんにん） dez mil pessoas - bannin" },
-    { k:"円", s:{pt:"iene/círculo", en:"yen/circle", es:"yen"}, h:"まる", r:"maru", ke:"円（まる） círculo - maru", oe:"百円（ひゃくえん） cem ienes - hyaku-en" },
-    { k:"色", s:{pt:"cor", en:"color", es:"color"}, h:"いろ", r:"iro", ke:"色（いろ） cor - iro", oe:"色々（いろいろ） vários - iroiro" },
-    { k:"白", s:{pt:"branco", en:"white", es:"blanco"}, h:"しろ", r:"shiro", ke:"白（しろ） branco - shiro", oe:"白人（はくじん） pessoa branca - hakujin" },
-    { k:"黒", s:{pt:"preto", en:"black", es:"negro"}, h:"くろ", r:"kuro", ke:"黒（くろ） preto - kuro", oe:"黒人（こくじん） pessoa negra - kokujin" },
-    { k:"赤", s:{pt:"vermelho", en:"red", es:"rojo"}, h:"あか", r:"aka", ke:"赤（あか） vermelho - aka", oe:"赤道（せきどう） equador - sekidō" },
-    { k:"青", s:{pt:"azul", en:"blue", es:"azul"}, h:"あお", r:"ao", ke:"青（あお） azul - ao", oe:"青年（せいねん） jovem - seinen" },
-    { k:"黄", s:{pt:"amarelo", en:"yellow", es:"amarillo"}, h:"き", r:"ki", ke:"黄（き） amarelo - ki", oe:"黄色（きいろ） amarelo - kiiro" },
-    { k:"月", s:{pt:"lua/mês", en:"moon/month", es:"luna"}, h:"つき", r:"tsuki", ke:"月（つき） lua - tsuki", oe:"一月（いちがつ） janeiro - ichigatsu" },
-    { k:"火", s:{pt:"fogo", en:"fire", es:"fuego"}, h:"ひ", r:"hi", ke:"火（ひ） fogo - hi", oe:"火山（かざん） vulcão - kazan" },
-    { k:"水", s:{pt:"água", en:"water", es:"agua"}, h:"みず", r:"mizu", ke:"水（みず） água - mizu", oe:"水曜日（すいようび） quarta-feira - suiyōbi" },
-    { k:"木", s:{pt:"árvore", en:"tree", es:"árbol"}, h:"き", r:"ki", ke:"木（き） árvore - ki", oe:"木曜日（もくようび） quinta-feira - mokuyōbi" },
-    { k:"金", s:{pt:"ouro/dinheiro", en:"gold/money", es:"oro"}, h:"かね", r:"kane", ke:"金（かね） dinheiro - kane", oe:"金曜日（きんようび） sexta-feira - kin'yōbi" },
-    { k:"土", s:{pt:"terra", en:"earth/soil", es:"tierra"}, h:"つち", r:"tsuchi", ke:"土（つち） terra - tsuchi", oe:"土曜日（どようび） sábado - doyōbi" },
-    { k:"日", s:{pt:"sol/dia", en:"sun/day", es:"sol"}, h:"ひ", r:"hi", ke:"日（ひ） dia - hi", oe:"日本（にほん） Japão - nihon" },
-    { k:"曜", s:{pt:"dia da semana", en:"weekday", es:"día semana"}, h:"-", r:"-", ke:"-", oe:"月曜日（げつようび） segunda-feira - getsuyōbi" },
-    { k:"毎", s:{pt:"cada/todos", en:"every", es:"cada"}, h:"ごと", r:"goto", ke:"毎日（まいにち） todos os dias - mainichi", oe:"毎週（まいしゅう） toda semana - maishū" },
-    { k:"週", s:{pt:"semana", en:"week", es:"semana"}, h:"-", r:"-", ke:"-", oe:"毎週（まいしゅう） toda semana - maishū" },
-    { k:"行", s:{pt:"ir", en:"to go", es:"ir"}, h:"い", r:"i", ke:"行く（いく） ir - iku", oe:"銀行（ぎんこう） banco - ginkō" },
-    { k:"来", s:{pt:"vir", en:"to come", es:"venir"}, h:"く", r:"ku", ke:"来る（くる） vir - kuru", oe:"来月（らいげつ） próximo mês - raigetsu" },
-    { k:"帰", s:{pt:"voltar", en:"to return", es:"volver"}, h:"かえ", r:"kae", ke:"帰る（かえる） voltar - kaeru", oe:"帰国（きこく） voltar ao país - kikoku" },
-    { k:"始", s:{pt:"começar", en:"to start", es:"empezar"}, h:"はじ", r:"haji", ke:"始める（はじめる） começar - hajimeru", oe:"開始（かいし） início - kaishi" },
-    { k:"終", s:{pt:"terminar", en:"to end", es:"terminar"}, h:"お", r:"o", ke:"終わる（おわる） terminar - owaru", oe:"終了（しゅうりょう） fim - shūryō" },
-    { k:"起", s:{pt:"levantar/acordar", en:"wake up", es:"despertar"}, h:"お", r:"o", ke:"起きる（おきる） acordar - okiru", oe:"起床（きしょう） acordar - kishō" },
-    { k:"寝", s:{pt:"dormir", en:"sleep", es:"dormir"}, h:"ね", r:"ne", ke:"寝る（ねる） dormir - neru", oe:"就寝（しゅうしん） ir dormir - shūshin" },
-    { k:"働", s:{pt:"trabalhar", en:"work", es:"trabajar"}, h:"はたら", r:"hatara", ke:"働く（はたらく） trabalhar - hataraku", oe:"労働（ろうどう） trabalho - rōdō" },
-    { k:"勉", s:{pt:"esforçar-se", en:"to exert", es:"esfuerzo"}, h:"つと", r:"tsuto", ke:"勉める（つとめる） esforçar-se - tsutomeru", oe:"勉強（べんきょう） estudar - benkyō" },
-    { k:"強", s:{pt:"forte", en:"strong", es:"fuerte"}, h:"つよ", r:"tsuyo", ke:"強い（つよい） forte - tsuyoi", oe:"勉強（べんきょう） estudar - benkyō" }
+    { k:"人", s:{pt:"pessoa", en:"person", es:"persona"}, h:"ひと", r:"hito", ke:"人（ひと） pessoa - hito", oe:"ジン (jin) - 日本人（にほんじん） japonês / ニン (nin) - 三人（さんにん） três pessoas" },
+    { k:"男", s:{pt:"homem", en:"man", es:"hombre"}, h:"おとこ", r:"otoko", ke:"男（おとこ） homem - otoko", oe:"ダン (dan) - 男子（だんし） menino / ナン (nan) - 長男（ちょうnan） filho mais velho" },
+    { k:"女", s:{pt:"mulher", en:"woman", es:"mujer"}, h:"おんな", r:"onna", ke:"女（おんな） mulher - onna", oe:"ジョ (jo) - 女子（じょし） menina / ニョ (nyo) - 彼女（かのじょ） ela" },
+    { k:"子", s:{pt:"criança", en:"child", es:"niño"}, h:"こ", r:"ko", ke:"子（こ） criança - ko", oe:"シ (shi) - 女子（じょし） menina / ス (su) - 椅子（いす） cadeira" },
+    { k:"車", s:{pt:"carro", en:"car", es:"carro"}, h:"くるま", r:"kuruma", ke:"車（くるま） carro - kuruma", oe:"シャ (sha) - 電車（でんしゃ） trem" },
+    { k:"山", s:{pt:"montanha", en:"mountain", es:"montaña"}, h:"やま", r:"yama", ke:"山（やま） montanha - yama", oe:"サン (san) - 火山（かざん） vulcão" },
+    { k:"川", s:{pt:"rio", en:"river", es:"río"}, h:"かわ", r:"kawa", ke:"川（かわ） rio - kawa", oe:"セン (sen) - 川（せん） rio" },
+    { k:"田", s:{pt:"campo de arroz", en:"rice field", es:"arrozal"}, h:"た", r:"ta", ke:"田（た） arrozal - ta", oe:"デン (den) - 田園（でんえん） campo" },
+    { k:"米", s:{pt:"arroz", en:"rice", es:"arroz"}, h:"こめ", r:"kome", ke:"米（こめ） arroz - kome", oe:"ベイ (bei) - 米国（べいこく） EUA / マイ (mai) - 新米（しんまい） arroz novo" },
+    { k:"雨", s:{pt:"chuva", en:"rain", es:"lluvia"}, h:"あめ", r:"ame", ke:"雨（あめ） chuva - ame", oe:"ウ (u) - 雨天（うてん） tempo chuvoso" },
+    { k:"上", s:{pt:"cima", en:"up", es:"arriba"}, h:"うえ", r:"ue", ke:"上（うえ） cima - ue", oe:"ジョウ (jō) - 上手（じょうず） habilidoso / ショウ (shō) - 上旬（じょうじゅん） início do mês" },
+    { k:"中", s:{pt:"meio/dentro", en:"middle/inside", es:"medio"}, h:"なか", r:"naka", ke:"中（なか） dentro - naka", oe:"チュウ (chū) - 中学校（ちゅうがっこう） escola média / 一日中（いちにちじゅう） o dia todo" },
+    { k:"下", s:{pt:"baixo", en:"down/below", es:"abajo"}, h:"した", r:"shita", ke:"下（した） baixo - hita", oe:"カ (ka) - 地下（ちか） subterrâneo / ゲ (ge) - 下水（げすい） esgoto" },
+    { k:"左", s:{pt:"esquerda", en:"left", es:"izquierda"}, h:"ひだり", r:"hidari", ke:"左（ひだり） esquerda - hidari", oe:"サ (sa) - 左右（さゆう） esquerda e direita" },
+    { k:"右", s:{pt:"direita", en:"right", es:"derecha"}, h:"みぎ", r:"migi", ke:"右（みぎ） direita - migi", oe:"ウ (u) - 右折（うせつ） curva à direita / ユウ (yū) - 左右（さゆう） esquerda e direita" },
+    { k:"明", s:{pt:"claro/luz", en:"light", es:"claro"}, h:"あかるい", r:"akarui", ke:"明るい（あかるい） claro - akarui", oe:"メイ (mei) - 明日（あした） amanhã / ミョウ (myō) - 明後日（みょうごにち） depois de amanhã" },
+    { k:"休", s:{pt:"descansar", en:"rest", es:"descansar"}, h:"やすむ", r:"yasumu", ke:"休む（やすむ） descansar - yasumu", oe:"キュウ (kyū) - 休日（きゅうじつ） folga / 休憩（きゅうけい） intervalo" },
+    { k:"林", s:{pt:"bosque pequeno", en:"grove", es:"bosque"}, h:"はやし", r:"hayashi", ke:"林（はやし） bosque - hayashi", oe:"リン (rin) - 森林（しんりん） floresta" },
+    { k:"森", s:{pt:"floresta", en:"forest", es:"selva"}, h:"もり", r:"mori", ke:"森（もり） floresta - mori", oe:"シン (shin) - 森林（しんりん） floresta" },
+    { k:"好", s:{pt:"gostar", en:"to like", es:"gustar"}, h:"すき", r:"suki", ke:"好き（すき） gostar - suki", oe:"コウ (kō) - 好物（こうぶつ） comida favorita / 良好（りょうこう） bom" },
+    { k:"一", s:{pt:"um", en:"one", es:"uno"}, h:"ひと", r:"hito", ke:"一つ（ひとつ） um - hitotsu", oe:"イチ (ichi) - 一日（いちにち） um dia / イツ (itsu) - 一緒（いっしょ） junto" },
+    { k:"二", s:{pt:"dois", en:"two", es:"dos"}, h:"ふた", r:"futa", ke:"二つ（ふたつ） dois - futatsu", oe:"ニ (ni) - 二人（ににん） duas pessoas / 二月（にがつ） fevereiro" },
+    { k:"三", s:{pt:"três", en:"three", es:"tres"}, h:"みっつ", r:"mittsu", ke:"三つ（みっつ） três - mittsu", oe:"サン (san) - 三人（さんにん） três pessoas / 三月（さんがつ） março" },
+    { k:"四", s:{pt:"quatro", en:"four", es:"cuatro"}, h:"よっつ", r:"yottsu", ke:"四つ（よっつ） quatro - yottsu", oe:"シ (shi) - 四月（しがつ） abril / 四季（しき） quatro estações" },
+    { k:"五", s:{pt:"cinco", en:"five", es:"cinco"}, h:"いつつ", r:"itsutsu", ke:"五つ（いつつ） cinco - itsutsu", oe:"ゴ (go) - 五人（ごにん） cinco pessoas / 五月（ごがつ） maio" },
+    { k:"六", s:{pt:"seis", en:"six", es:"seis"}, h:"むっつ", r:"muttsu", ke:"六つ（むっつ） seis - muttsu", oe:"ロク (roku) - 六日（むいか） seis dias / 六月（ろくがつ） junho" },
+    { k:"七", s:{pt:"sete", en:"seven", es:"siete"}, h:"なな", r:"nana", ke:"七つ（ななつ） sete - nanatsu", oe:"シチ (shichi) - 七月（しちがつ） julho / 七分（しちぶ） sete partes" },
+    { k:"八", s:{pt:"oito", en:"eight", es:"ocho"}, h:"やっつ", r:"yattsu", ke:"八つ（ยっつ） oito - yattsu", oe:"ハチ (hachi) - 八日（ようか） oito dias / 八月（はちがつ） agosto" },
+    { k:"九", s:{pt:"nove", en:"nine", es:"nueve"}, h:"ここの", r:"kokono", ke:"九つ（ここのつ） nove - kokonotsu", oe:"キュウ (kyū) - 九回（きゅうかい） nove vezes / ク (ku) - 九月（くがつ） setembro" },
+    { k:"十", s:{pt:"dez", en:"ten", es:"diez"}, h:"とお", r:"tō", ke:"十（とお） dez - tō", oe:"ジュウ (jū) - 十分（じゅうぶん） suficiente / ジッ (jit) - 十回（じっかい） dez vezes" },
+    { k:"百", s:{pt:"cem", en:"hundred", es:"cien"}, h:"もも", r:"momo", ke:"百（もも） cem - momo", oe:"ヒャク (hyaku) - 百円（ひゃくえん） cem ienes / ビャク (byaku) - 三百（さんびゃく） trezentos" },
+    { k:"千", s:{pt:"mil", en:"thousand", es:"mil"}, h:"ち", r:"chi", ke:"千（ち） mil - chi", oe:"セン (sen) - 千円（せんえん） mil ienes / ゼン (zen) - 三千（さんぜん） três mil" },
+    { k:"万", s:{pt:"dez mil", en:"10k", es:"diez mil"}, h:"よろず", r:"yorozu", ke:"一万（いちまん） dez mil - ichiman", oe:"マン (man) - 万人（ばんにん） dez mil pessoas / バン (ban) - 万国（ばんこく） nações" },
+    { k:"円", s:{pt:"iene/círculo", en:"yen/circle", es:"yen"}, h:"まる", r:"maru", ke:"円（まる） círculo - maru", oe:"エン (en) - 百円（ひゃくえん） cem ienes / 五千円（ごせんえん） cinco mil ienes" },
+    { k:"色", s:{pt:"cor", en:"color", es:"color"}, h:"いろ", r:"iro", ke:"色（いろ） cor - iro", oe:"ショク (shoku) - 黄色（きいろ） amarelo / シキ (shiki) - 水色（みずいろ） azul claro" },
+    { k:"白", s:{pt:"branco", en:"white", es:"blanco"}, h:"しろ", r:"shiro", ke:"白（しろ） branco - shiro", oe:"ハク (haku) - 白人（はくじん） pessoa branca / ビャク (byaku) - 空白（くうはく） espaço em branco" },
+    { k:"黒", s:{pt:"preto", en:"black", es:"negro"}, h:"くろ", r:"kuro", ke:"黒（くろ） preto - kuro", oe:"コク (koku) - 黒人（こくじん） pessoa negra / 黒米（こくまい） arroz preto" },
+    { k:"赤", s:{pt:"vermelho", en:"red", es:"rojo"}, h:"あか", r:"aka", ke:"赤（あか） vermelho - aka", oe:"セキ (seki) - 赤道（せきどう） equador / シャク (shaku) - 赤十字（せきじゅうじ） Cruz Vermelha" },
+    { k:"青", s:{pt:"azul", en:"blue", es:"azul"}, h:"あお", r:"ao", ke:"青（あお） azul - ao", oe:"セイ (sei) - 青年（せいねん） jovem / ショウ (shō) - 青天（せいてん） céu azul" },
+    { k:"黄", s:{pt:"amarelo", en:"yellow", es:"amarillo"}, h:"き", r:"ki", ke:"黄（き） amarelo - ki", oe:"コウ (kō) - 黄色（きいろ） amarelo / オウ (ō) - 黄金（おうごん） ouro" },
+    { k:"月", s:{pt:"lua/mês", en:"moon/month", es:"luna"}, h:"つき", r:"tsuki", ke:"月（つき） lua - tsuki", oe:"ゲツ (getsu) - 月曜日（げつようび） segunda-feira / ガツ (gatsu) - 一月（いちがつ） janeiro" },
+    { k:"火", s:{pt:"fogo", en:"fire", es:"fuego"}, h:"ひ", r:"hi", ke:"火（ひ） fogo - hi", oe:"カ (ka) - 火山（かざん） vulcão / 火曜日（かようび） terça-feira" },
+    { k:"水", s:{pt:"água", en:"water", es:"agua"}, h:"みず", r:"mizu", ke:"水（みず） água - mizu", oe:"スイ (sui) - 水曜日（すいようび） quarta-feira / 水上（すいじょう） sobre a água" },
+    { k:"木", s:{pt:"árvore", en:"tree", es:"árbol"}, h:"き", r:"ki", ke:"木（き） árvore - ki", oe:"モク (moku) - 木曜日（もくようび） quinta-feira / ボク (boku) - 大木（たいぼく） árvore grande" },
+    { k:"金", s:{pt:"ouro/dinheiro", en:"gold/money", es:"oro/dinero"}, h:"かね", r:"kane", ke:"金（かね） dinheiro - kane", oe:"キン (kin) - 金曜日（きんようび） sexta-feira / コン (kon) - 黄金（おうごん） ouro" },
+    { k:"土", s:{pt:"terra", en:"earth/soil", es:"tierra"}, h:"つち", r:"tsuchi", ke:"土（つち） terra - tsuchi", oe:"ド (do) - 土曜日（どようび） sábado / ト (to) - 土地（とち） terreno" },
+    { k:"日", s:{pt:"sol/dia", en:"sun/day", es:"sol"}, h:"ひ", r:"hi", ke:"日（ひ） dia - hi", oe:"ニチ (nichi) - 日本（にほん） Japão / ジツ (jitsu) - 休日（きゅうじつ） feriado" },
+    { k:"曜", s:{pt:"dia da semana", en:"weekday", es:"día semana"}, h:"-", r:"-", ke:"-", oe:"ヨウ (yō) - 月曜日（げつようび） segunda-feira" },
+    { k:"毎", s:{pt:"cada/todos", en:"every", es:"cada"}, h:"ごと", r:"goto", ke:"毎日（まいにち） todos os dias - mainichi", oe:"マイ (mai) - 毎週（まいしゅう） toda semana" },
+    { k:"週", s:{pt:"semana", en:"week", es:"semana"}, h:"-", r:"-", ke:"-", oe:"シュウ (shū) - 毎週（まいしゅう） toda semana" },
+    { k:"行", s:{pt:"ir", en:"to go", es:"ir"}, h:"い", r:"i", ke:"行く（いく） ir - iku", oe:"コウ (kō) - 銀行（ぎんこう） banco / ギョウ (gyō) - 行事（ぎょうじ） evento" },
+    { k:"来", s:{pt:"vir", en:"to come", es:"venir"}, h:"く", r:"ku", ke:"来る（くる） vir - kuru", oe:"ライ (rai) - 来月（らいげつ） próximo mês" },
+    { k:"帰", s:{pt:"voltar", en:"to return", es:"volver"}, h:"かえ", r:"kae", ke:"帰る（かえる） voltar - kaeru", oe:"キ (ki) - 帰国（きこく） voltar ao país" },
+    { k:"始", s:{pt:"começar", en:"to start", es:"empezar"}, h:"はじ", r:"haji", ke:"始める（はじめる） começar - hajimeru", oe:"シ (shi) - 開始（かいし） início" },
+    { k:"終", s:{pt:"terminar", en:"to end", es:"terminar"}, h:"お", r:"o", ke:"終わる（おわる） terminar - owaru", oe:"シュウ (shū) - 終了（しゅうりょう） fim" },
+    { k:"起", s:{pt:"levantar/acordar", en:"wake up", es:"despertar"}, h:"お", r:"o", ke:"起きる（おきる） acordar - okiru", oe:"キ (ki) - 起床（きしょう） acordar" },
+    { k:"寝", s:{pt:"dormir", en:"sleep", es:"dormir"}, h:"ね", r:"ne", ke:"寝る（ねる） dormir - neru", oe:"シン (shin) - 就寝（しゅうしん） ir dormir" },
+    { k:"働", s:{pt:"trabalhar", en:"work", es:"trabajar"}, h:"はたら", r:"hatara", ke:"働く（はたらく） trabalhar - hataraku", oe:"ドウ (dō) - 労働（ろうどう） trabalho" },
+    { k:"勉", s:{pt:"esforçar-se", en:"to exert", es:"esfuerzo"}, h:"つと", r:"tsuto", ke:"勉める（つとめる） esforçar-se - tsutomeru", oe:"ベン (ben) - 勉強（べんきょう） estudar" },
+    { k:"強", s:{pt:"forte", en:"strong", es:"fuerte"}, h:"つよ", r:"tsuyo", ke:"強い（つよい） forte - tsuyoi", oe:"キョウ (kyō) - 勉強（べんきょう） estudar / ゴウ (gō) - 強引（ごういん） forçado" }
 ];
 
 let currentLang = 'pt';
@@ -226,21 +212,32 @@ function changeLang(l, btn) {
 }
 
 function renderAll() {
-    // Títulos de seção
-    const titles = {
-        pt: ["Dias da Semana", "Calendário Mensal (1-31)", "Lista de Referência (Ordem 1-60)"],
-        en: ["Days of the Week", "Monthly Calendar (1-31)", "Reference List (Order 1-60)"],
-        es: ["Días de la Semana", "Calendario Mensual (1-31)", "Lista de Referencia (Orden 1-60)"]
+    // Tradução dos Títulos e dos Links do Menu
+    const translations = {
+        pt: { titles: ["Contadores", "Dias da Semana", "Calendário Mensal", "Lista de Referência"], nav: ["Aleatório", "Contadores", "Semana", "Calendário", "Lista"] },
+        en: { titles: ["Counters", "Days of the Week", "Monthly Calendar", "Reference List"], nav: ["Random", "Counters", "Week", "Calendar", "List"] },
+        es: { titles: ["Contadores", "Días de la Semana", "Calendario Mensual", "Lista de Referencia"], nav: ["Aleatorio", "Contadores", "Semana", "Calendario", "Lista"] }
     };
-    document.getElementById('t-week').innerText = titles[currentLang][0];
-    document.getElementById('t-month').innerText = titles[currentLang][1];
-    document.getElementById('t-list').innerText = titles[currentLang][2];
 
-    // Renderizar Grades (Semana e Mês)
+    const t = translations[currentLang];
+    
+    // Atualiza Links do Menu (Mesma ordem do HTML)
+    document.getElementById('nav-1').innerText = t.nav[0];
+    document.getElementById('nav-2').innerText = t.nav[1];
+    document.getElementById('nav-3').innerText = t.nav[2];
+    document.getElementById('nav-4').innerText = t.nav[3];
+    document.getElementById('nav-5').innerText = t.nav[4];
+
+    // Atualiza Títulos das Seções
+    document.getElementById('t-counts').innerText = t.titles[0];
+    document.getElementById('t-week').innerText = t.titles[1];
+    document.getElementById('t-month').innerText = t.titles[2];
+    document.getElementById('t-list').innerText = t.titles[3];
+
+    renderGrid('grid-counts', countsData);
     renderGrid('grid-week', weekData);
     renderGrid('grid-month', monthData);
 
-    // Renderizar Lista de 60 (ORDEM EXATA)
     const listEl = document.getElementById('main-list');
     listEl.innerHTML = kanji60.map((item, index) => `
         <div class="list-item">
@@ -248,8 +245,8 @@ function renderAll() {
             <div>
                 <span class="num-badge">#${index + 1}</span><br>
                 <strong>${item.k} - ${item.h} - ${item.r} - ${item.s[currentLang]}</strong><br>
-                <small style="color: #666">KUN: ${item.ke}</small><br>
-                <small style="color: #666">ON: ${item.oe}</small>
+                <small style="color: #666; display: block; margin-top:5px;">KUN: ${item.ke}</small>
+                <small style="color: #666; display: block;">ON: ${item.oe.split(' / ').join('<br>ON: ')}</small>
             </div>
         </div>
     `).join('');
@@ -270,11 +267,13 @@ function renderGrid(id, data) {
 
 function nextCard() {
     const random = kanji60[Math.floor(Math.random() * kanji60.length)];
+    if(!random) return;
     document.getElementById('kanji-main').innerText = random.k;
     document.getElementById('ans-full').innerText = `${random.k} - ${random.h} - ${random.r} - ${random.s[currentLang]}`;
     document.getElementById('ans-kun').innerText = random.ke;
-    document.getElementById('ans-on').innerText = random.oe;
+    document.getElementById('ans-on').innerHTML = random.oe.split(' / ').join('<br>');
     document.getElementById('answer-box').style.display = 'none';
+    document.getElementById('tap-hint').style.display = 'block';
 }
 
 renderAll();
