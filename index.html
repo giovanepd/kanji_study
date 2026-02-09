@@ -34,6 +34,24 @@
             </div>
         </div>
 
+        <div class="unit-filter-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 15px;">
+            <label class="unit-checkbox">
+                <input type="checkbox" class="unit-input" value="1" checked onchange="nextCard()"> <span>U1</span>
+            </label>
+            <label class="unit-checkbox">
+                <input type="checkbox" class="unit-input" value="2" checked onchange="nextCard()"> <span>U2</span>
+            </label>
+            <label class="unit-checkbox">
+                <input type="checkbox" class="unit-input" value="3" checked onchange="nextCard()"> <span>U3</span>
+            </label>
+            <label class="unit-checkbox">
+                <input type="checkbox" class="unit-input" value="4" checked onchange="nextCard()"> <span>U4</span>
+            </label>
+            <label class="unit-checkbox">
+                <input type="checkbox" class="unit-input" value="sem unidade" checked onchange="nextCard()"> <span>S/U</span>
+            </label>
+        </div>
+
         <div class="flashcard" id="kanji-random" onclick="showAnswer()">
             <div id="kanji-main">---</div>
             <div id="tap-hint"><i class="fa-solid fa-wand-magic-sparkles"></i></div>

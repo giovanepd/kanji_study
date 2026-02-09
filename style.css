@@ -30,3 +30,28 @@ body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; di
 .list-area { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
 .list-item { background: white; padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
 .list-k { font-size: 3rem; font-weight: bold; color: var(--primary); min-width: 60px; text-align: center; }
+
+.unit-checkbox {
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.unit-checkbox input {
+    display: none; /* Esconde o quadradinho padrão */
+}
+
+.unit-checkbox span {
+    padding: 6px 12px;
+    border: 2px solid var(--primary);
+    border-radius: 15px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+/* Estilo quando estiver marcado */
+.unit-checkbox input:checked + span {
+    background: var(--primary);
+    color: white;
+}
