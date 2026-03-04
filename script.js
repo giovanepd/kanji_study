@@ -79,7 +79,27 @@ const kanjiData = [
     { k:"学", u:"4", s:{pt:"estudar/aprender", en:"study/learn", es:"estudar/aprender"}, h:"まな.ぶ", r:"manabu", ke:"学ぶ（まなぶ） aprender", oe:"ガク (gaku) - 学生（がくせい） estudante / 大学（だいがく） universidade" },
     { k:"会", u:"4", s:{pt:"encontrar/reunião", en:"meet/society", es:"encontrar/reunión"}, h:"あ.う", r:"au", ke:"会う（あう） encontrar alguém", oe:"カイ (kai) - 会議（かいぎ） reunião / 会社（かいしゃ） empresa" },
     { k:"社", u:"4", s:{pt:"santuário/sociedade", en:"shrine/society", es:"templo/sociedad"}, h:"やしろ", r:"yashiro", ke:"社（やしろ） pequeno santuário", oe:"シャ (sha) - 会社（かいしゃ） empresa / 社長（しゃちょう） presidente da empresa" },
-    { k:"員", u:"4", s:{pt:"membro", en:"member", es:"miembro"}, h:"-", r:"-", ke:"-", oe:"イン (in) - 会社員（かいしゃいん） funcionário / 会員（かいいん） membro" }
+    { k:"員", u:"4", s:{pt:"membro", en:"member", es:"miembro"}, h:"-", r:"-", ke:"-", oe:"イン (in) - 会社員（かいしゃいん） funcionário / 会員（かいいん） membro" },
+    { k:"時", u:"5", s:{pt:"tempo/hora", en:"time/hour", es:"tiempo"}, h:"とき", r:"toki", ke:"時（とき） tempo/ocasião", oe:"ジ (ji) - 四時（よじ） 4 horas / 時間（じかん） tempo-período" },
+    { k:"分", u:"5", s:{pt:"minuto/dividir", en:"minute/part", es:"minuto"}, h:"わ.ける", r:"wakeru", ke:"分ける（わける） dividir", oe:"フン (fun) - 五分（ごふん） 5 min / プン (pun) - 十分（じゅっぷん） 10 min" },
+    { k:"午", u:"5", s:{pt:"meio-dia", en:"noon", es:"mediodía"}, h:"-", r:"-", ke:"-", oe:"ゴ (go) - 午前（ごぜん） manhã-AM / 午後（ごご） tarde-PM" },
+    { k:"前", u:"5", s:{pt:"frente/antes", en:"front/before", es:"antes"}, h:"まえ", r:"mae", ke:"名前（なまえ） nome / 三日前（みっかまえ） 3 dias atrás", oe:"ゼン (zen) - 午前（ごぜん） AM / 前半（ぜんはん） primeira metade" },
+    { k:"後", u:"5", s:{pt:"atrás/depois", en:"back/after", es:"después"}, h:"うし.ろ / あと", r:"ushiro / ato", ke:"後ろ（うしろ） atrás / 後で（あとで） depois", oe:"ゴ (go) - 午後（ごご） PM / ロク (roku) - 最後（さいご） último" },
+    { k:"間", u:"5", s:{pt:"entre/intervalo", en:"between/interval", es:"entre"}, h:"あいだ", r:"aida", ke:"間（あいだ） entre/no meio", oe:"カン (kan) - 時間（じかん） tempo / 一週間（いっしゅうかん） uma semana" },
+    { k:"半", u:"5", s:{pt:"metade/meio", en:"half", es:"mitad"}, h:"なか.ば", r:"nakaba", ke:"半ば（なかば） no meio de", oe:"ハン (han) - 二時半（にじはん） 2:30 / 半分（はんぶん） metade" },
+    { k:"朝", u:"5", s:{pt:"manhã", en:"morning", es:"mañana"}, h:"あさ", r:"asa", ke:"朝（あさ） manhã / 今朝（けさ） esta manhã", oe:"チョウ (chō) - 朝食（ちょうしょく） café da manhã" },
+    { k:"昼", u:"5", s:{pt:"dia/tarde", en:"daytime/noon", es:"tarde"}, h:"ひる", r:"hiru", ke:"昼（ひる） tarde/almoço", oe:"チュウ (chū) - 昼食（ちゅうしょく） almoço" },
+    { k:"晩", u:"5", s:{pt:"noite", en:"evening", es:"noche"}, h:"-", r:"-", ke:"-", oe:"バン (ban) - 今晩（こんばん） esta noite / 晩御飯（ばんごはん） jantar" },
+    { k:"今", u:"5", s:{pt:"agora", en:"now", es:"ahora"}, h:"いま", r:"ima", ke:"今（いま） agora", oe:"コン (kon) - 今月（こんげつ） este mês / キョウ (kyō) - 今日（きょう） hoje" },
+    { k:"去", u:"5", s:{pt:"passado/sair", en:"past/leave", es:"pasado"}, h:"さ.る", r:"saru", ke:"去る（さる） partir/deixar", oe:"キョ (kyo) - 去年（きょねん） ano passado" },
+    { k:"年", u:"5", s:{pt:"ano", en:"year", es:"año"}, h:"とし", r:"toshi", ke:"年（とし） ano / 今年（ことし） este ano", oe:"ネン (nen) - 2024年 / 去年（きょねん） ano passado" },
+    { k:"夕", u:"5", s:{pt:"entardecer", en:"evening", es:"atardecer"}, h:"ゆう", r:"yuu", ke:"夕方（ゆうがた） entardecer / 夕食（ゆうしょく） jantar", oe:"セキ (seki) - 一夕（いっせき） uma noite" },
+    { k:"方", u:"5", s:{pt:"direção/pessoa", en:"direction/person", es:"dirección"}, h:"かた", r:"kata", ke:"夕方（ゆうgata） entardecer / あの方（あのかた） aquela pessoa", oe:"ホウ (hō) - 両方（りょうほう） ambos" },
+    { k:"春", u:"5", s:{pt:"primavera", en:"spring", es:"primavera"}, h:"はる", r:"haru", ke:"春（はる） primavera", oe:"シュン (shun) - 春分（しゅんぶん） equinócio de primavera" },
+    { k:"夏", u:"5", s:{pt:"verão", en:"summer", es:"verano"}, h:"なつ", r:"natsu", ke:"夏（なつ） verão / 夏休み（なつやすみ） férias de verão", oe:"カ (ka) - 初夏（しょか） início do verão" },
+    { k:"秋", u:"5", s:{pt:"outono", en:"autumn", es:"otoño"}, h:"あき", r:"aki", ke:"秋（あき） outono", oe:"シュウ (shū) - 秋分（しゅんぶん） equinócio de outono" },
+    { k:"冬", u:"5", s:{pt:"inverno", en:"winter", es:"invierno"}, h:"ふゆ", r:"fuyu", ke:"冬（ふゆ） inverno / 冬休み（ふゆやすみ） férias de inverno", oe:"トウ (tō) - 立冬（りっとう） início do inverno" },
+    { k:"夜", u:"5", s:{pt:"noite/escuridão", en:"night", es:"noche"}, h:"よ / よる", r:"yo / yoru", ke:"夜（よる） noite / 今夜（こんや） esta noite", oe:"ヤ (ya) - 夜食（やしょく） lanche da noite" }
 ];
 // 2. DADOS AUXILIARES (Usando sua lista exata)
 const countsData = [
