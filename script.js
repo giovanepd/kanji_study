@@ -99,7 +99,7 @@ const kanjiData = [
     { k:"夏", u:"5", s:{pt:"verão", en:"summer", es:"verano"}, h:"なつ", r:"natsu", ke:"夏（なつ） verão / 夏休み（なつやすみ） férias de verão", oe:"カ (ka) - 初夏（しょか） início do verão" },
     { k:"秋", u:"5", s:{pt:"outono", en:"autumn", es:"otoño"}, h:"あき", r:"aki", ke:"秋（あき） outono", oe:"シュウ (shū) - 秋分（しゅんぶん） equinócio de outono" },
     { k:"冬", u:"5", s:{pt:"inverno", en:"winter", es:"invierno"}, h:"ふゆ", r:"fuyu", ke:"冬（ふゆ） inverno / 冬休み（ふゆやすみ） férias de inverno", oe:"トウ (tō) - 立冬（りっとう） início do inverno" },
-    { k:"夜", u:"5", s:{pt:"noite/escuridão", en:"night", es:"noche"}, h:"よ / よる", r:"yo / yoru", ke:"夜（よる） noite / 今夜（こんや） esta noite", oe:"ヤ (ya) - 夜食（やしょく） lanche da noite" }
+    { k:"夜", u:"5", s:{pt:"noite/escuridão", en:"night", es:"noche"}, h:"よ / よる", r:"yo / yoru", ke:"夜（よる） noite", oe:"ヤ (ya) - 今夜（こんや） esta noite" }
 ];
 // 2. DADOS AUXILIARES (Usando sua lista exata)
 const countsData = [
