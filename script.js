@@ -110,7 +110,7 @@ const kanjiData = [
     { k:"酒", u:"6", s:{pt:"bebida alcoólica/sake", en:"sake/alcohol", es:"alcohol/licor"}, h:"さけ", r:"sake", ke:"お酒（おさけ） álcool/sake", oe:"シュ (shu) - 日本酒（にほんしゅ） sake japonês" },
     { k:"肉", u:"6", s:{pt:"carne", en:"meat", es:"carne"}, h:"-", r:"-", ke:"肉（にく） carne", oe:"ニク (niku) - 牛肉（ぎゅうにく） carne de vaca / 肉屋（にくや） açougue" },
     { k:"牛", u:"6", s:{pt:"vaca/boi", en:"cow", es:"vaca"}, h:"うし", r:"ushi", ke:"牛（うし） vaca", oe:"ギュウ (gyū) - 牛乳（ぎゅうにゅう） leite de vaca / 牛肉（ぎゅうにく） carne bovina" },
-    { k:"魚", u:"6", s:{pt:"peixe", en:"fish", es:"pescado"}, h:"さkana / うお", r:"sakana / uo", ke:"魚（さかな） peixe", oe:"ギョ (gyo) - 金魚（きんぎょ） peixinho dourado / 魚屋（さかなや） peixaria" },
+    { k:"魚", u:"6", s:{pt:"peixe", en:"fish", es:"pescado"}, h:"さかな", r:"sakana", ke:"魚（さかな） peixe / 魚屋（さかなや） peixaria", oe:"ギョ (gyo) - 金魚（きんぎょ） peixinho dourado"},
     { k:"鳥", u:"6", s:{pt:"pássaro/ave", en:"bird", es:"pájaro"}, h:"とり", r:"tori", ke:"鳥（とり） pássaro / 焼き鳥（やきとり） espetinho de frango", oe:"チョウ (chō) - 白鳥（はくちょう） cisne" },
     { k:"犬", u:"6", s:{pt:"cachorro", en:"dog", es:"perro"}, h:"いぬ", r:"inu", ke:"犬（いぬ） cachorro / 子犬（こいぬ） filhote", oe:"ケン (ken) - 番犬（ばんけん） cão de guarda" },
     { k:"音", u:"6", s:{pt:"som", en:"sound", es:"sonido"}, h:"おと / ね", r:"oto / ne", ke:"音（おと） som / 本音（ほんね） sentimentos reais", oe:"オン (on) - 音楽（おんがく） música / 発音（はつおん） pronúncia" },
