@@ -94,12 +94,27 @@ const kanjiData = [
     { k:"去", u:"5", s:{pt:"passado/sair", en:"past/leave", es:"pasado"}, h:"さ.る", r:"saru", ke:"去る（さる） partir/deixar", oe:"キョ (kyo) - 去年（きょねん） ano passado" },
     { k:"年", u:"5", s:{pt:"ano", en:"year", es:"año"}, h:"とし", r:"toshi", ke:"年（とし） ano / 今年（ことし） este ano", oe:"ネン (nen) - 2024年 / 去年（きょねん） ano passado" },
     { k:"夕", u:"5", s:{pt:"entardecer", en:"evening", es:"atardecer"}, h:"ゆう", r:"yuu", ke:"夕方（ゆうがた） entardecer / 夕食（ゆうしょく） jantar", oe:"セキ (seki) - 一夕（いっせき） uma noite" },
-    { k:"方", u:"5", s:{pt:"direção/pessoa", en:"direction/person", es:"dirección"}, h:"かた", r:"kata", ke:"夕方（ゆうgata） entardecer / あの方（あのかた） aquela pessoa", oe:"ホウ (hō) - 両方（りょうほう） ambos" },
+    { k:"方", u:"5", s:{pt:"direção/pessoa", en:"direction/person", es:"dirección/persona"}, h:"かた", r:"kata", ke:"夕方（ゆうがた） entardecer / あの方（あのかた） aquela pessoa", oe:"ホウ (hō) - 両方（りょうほう） ambos" },
     { k:"春", u:"5", s:{pt:"primavera", en:"spring", es:"primavera"}, h:"はる", r:"haru", ke:"春（はる） primavera", oe:"シュン (shun) - 春分（しゅんぶん） equinócio de primavera" },
     { k:"夏", u:"5", s:{pt:"verão", en:"summer", es:"verano"}, h:"なつ", r:"natsu", ke:"夏（なつ） verão / 夏休み（なつやすみ） férias de verão", oe:"カ (ka) - 初夏（しょか） início do verão" },
     { k:"秋", u:"5", s:{pt:"outono", en:"autumn", es:"otoño"}, h:"あき", r:"aki", ke:"秋（あき） outono", oe:"シュウ (shū) - 秋分（しゅんぶん） equinócio de outono" },
     { k:"冬", u:"5", s:{pt:"inverno", en:"winter", es:"invierno"}, h:"ふゆ", r:"fuyu", ke:"冬（ふゆ） inverno / 冬休み（ふゆやすみ） férias de inverno", oe:"トウ (tō) - 立冬（りっとう） início do inverno" },
-    { k:"夜", u:"5", s:{pt:"noite/escuridão", en:"night", es:"noche"}, h:"よ / よる", r:"yo / yoru", ke:"夜（よる） noite", oe:"ヤ (ya) - 今夜（こんや） esta noite" }
+    { k:"夜", u:"5", s:{pt:"noite/escuridão", en:"night", es:"noche"}, h:"よ / よる", r:"yo / yoru", ke:"夜（よる） noite", oe:"ヤ (ya) - 今夜（こんや） esta noite" },
+    { k:"食", u:"6", s:{pt:"comer/comida", en:"eat/food", es:"comer"}, h:"た.べる / く.う", r:"taberu / kuu", ke:"食べる（たべる） comer / 食べ物（たべもの） comida", oe:"ショク (shoku) - 食事（しょくじ） refeição / 朝食（ちょうしょく） café da manhã" },
+    { k:"飲", u:"6", s:{pt:"beber", en:"drink", es:"beber"}, h:"の.む", r:"nomu", ke:"飲む（のむ） beber / 飲み物（のみもの） bebida", oe:"イン (in) - 飲料水（いんりょうすい） água potável" },
+    { k:"買", u:"6", s:{pt:"comprar", en:"buy", es:"comprar"}, h:"か.う", r:"kau", ke:"買う（かう） comprar / 買い物（かいもの） compras", oe:"バイ (bai) - 売買（ばいばい） compra e venda" },
+    { k:"見", u:"6", s:{pt:"ver", en:"see/look", es:"ver"}, h:"み.る", r:"miru", ke:"見る（みる） ver / 見せる（みせる） mostrar", oe:"ケン (ken) - 見学（けんがく） visita de estudo" },
+    { k:"聞", u:"6", s:{pt:"ouvir", en:"hear", es:"oír"}, h:"き.く", r:"kiku", ke:"聞く（きく） ouvir/perguntar / 聞こえる（きこえる） ser audível", oe:"ブン (bun) - 新聞（しんぶん） jornal" },
+    { k:"何", u:"6", s:{pt:"quê/qual", en:"what", es:"qué"}, h:"なに / なん", r:"nani / nan", ke:"何（なに） o quê? / 何か（なにか） algo", oe:"カ (ka) - 幾何学（きかがく） geometria" },
+    { k:"茶", u:"6", s:{pt:"chá", en:"tea", es:"té"}, h:"-", r:"-", ke:"お茶（おちゃ） chá japonês", oe:"チャ (cha) - 茶色（ちゃいろ） marrom / サ (sa) - 茶道（さどう） cerimônia do chá" },
+    { k:"酒", u:"6", s:{pt:"bebida alcoólica/sake", en:"sake/alcohol", es:"alcohol/licor"}, h:"さけ", r:"sake", ke:"お酒（おさけ） álcool/sake", oe:"シュ (shu) - 日本酒（にほんしゅ） sake japonês" },
+    { k:"肉", u:"6", s:{pt:"carne", en:"meat", es:"carne"}, h:"-", r:"-", ke:"肉（にく） carne", oe:"ニク (niku) - 牛肉（ぎゅうにく） carne de vaca / 肉屋（にくや） açougue" },
+    { k:"牛", u:"6", s:{pt:"vaca/boi", en:"cow", es:"vaca"}, h:"うし", r:"ushi", ke:"牛（うし） vaca", oe:"ギュウ (gyū) - 牛乳（ぎゅうにゅう） leite de vaca / 牛肉（ぎゅうにく） carne bovina" },
+    { k:"魚", u:"6", s:{pt:"peixe", en:"fish", es:"pescado"}, h:"さkana / うお", r:"sakana / uo", ke:"魚（さかな） peixe", oe:"ギョ (gyo) - 金魚（きんぎょ） peixinho dourado / 魚屋（さかなや） peixaria" },
+    { k:"鳥", u:"6", s:{pt:"pássaro/ave", en:"bird", es:"pájaro"}, h:"とり", r:"tori", ke:"鳥（とり） pássaro / 焼き鳥（やきとり） espetinho de frango", oe:"チョウ (chō) - 白鳥（はくちょう） cisne" },
+    { k:"犬", u:"6", s:{pt:"cachorro", en:"dog", es:"perro"}, h:"いぬ", r:"inu", ke:"犬（いぬ） cachorro / 子犬（こいぬ） filhote", oe:"ケン (ken) - 番犬（ばんけん） cão de guarda" },
+    { k:"音", u:"6", s:{pt:"som", en:"sound", es:"sonido"}, h:"おと / ね", r:"oto / ne", ke:"音（おと） som / 本音（ほんね） sentimentos reais", oe:"オン (on) - 音楽（おんがく） música / 発音（はつおん） pronúncia" },
+    { k:"楽", u:"6", s:{pt:"confortável/música", en:"music/comfort", es:"música/fácil"}, h:"たの.しい", r:"tanoshii", ke:"楽しい（たのしい） divertido / 楽な（らくな） fácil/confortável", oe:"ガク (gaku) - 音楽（おんがく） música / ラク (raku) - 楽勝（らくしょう） vitória fácil" }
 ];
 // 2. DADOS AUXILIARES (Usando sua lista exata)
 const countsData = [
@@ -240,6 +255,23 @@ function renderAll() {
             </div>
         </div>
     `).join('');
+}
+
+window.onscroll = function() {
+    const btn = document.getElementById("backToTop");
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        btn.style.display = "block";
+    } else {
+        btn.style.display = "none";
+    }
+};
+
+// Função para voltar ao topo suavemente
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 }
 
 // Inicialização

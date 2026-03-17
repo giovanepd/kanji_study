@@ -50,6 +50,9 @@
             <label class="unit-checkbox">
                 <input type="checkbox" class="unit-input" value="5" checked onchange="nextCard()"> <span>U5</span>
             </label>
+            <label class="unit-checkbox">
+                <input type="checkbox" class="unit-input" value="6" checked onchange="nextCard()"> <span>U6</span>
+            </label>
         </div>
 
         <div class="flashcard" id="kanji-random" onclick="showAnswer()">
@@ -73,6 +76,9 @@
         <h2 id="t-list">Lista de Referência</h2>
         <div class="list-area" id="main-list"></div>
     </div>
+    <button id="backToTop" onclick="scrollToTop()" title="Voltar ao topo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>
