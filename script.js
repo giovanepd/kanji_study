@@ -114,7 +114,12 @@ const kanjiData = [
     { k:"鳥", u:"6", s:{pt:"pássaro/ave", en:"bird", es:"pájaro"}, h:"とり", r:"tori", ke:"鳥（とり） pássaro / 焼き鳥（やきとり） espetinho de frango", oe:"チョウ (chō) - 白鳥（はくちょう） cisne" },
     { k:"犬", u:"6", s:{pt:"cachorro", en:"dog", es:"perro"}, h:"いぬ", r:"inu", ke:"犬（いぬ） cachorro / 子犬（こいぬ） filhote", oe:"ケン (ken) - 番犬（ばんけん） cão de guarda" },
     { k:"音", u:"6", s:{pt:"som", en:"sound", es:"sonido"}, h:"おと / ね", r:"oto / ne", ke:"音（おと） som / 本音（ほんね） sentimentos reais", oe:"オン (on) - 音楽（おんがく） música / 発音（はつおん） pronúncia" },
-    { k:"楽", u:"6", s:{pt:"confortável/música", en:"music/comfort", es:"música/fácil"}, h:"たの.しい", r:"tanoshii", ke:"楽しい（たのしい） divertido / 楽な（らくな） fácil/confortável", oe:"ガク (gaku) - 音楽（おんがく） música / ラク (raku) - 楽勝（らくしょう） vitória fácil" }
+    { k:"楽", u:"6", s:{pt:"confortável/música", en:"music/comfort", es:"música/fácil"}, h:"たの.しい", r:"tanoshii", ke:"楽しい（たのしい） divertido / 楽な（らくな） fácil/confortável", oe:"ガク (gaku) - 音楽（おんがく） música / ラク (raku) - 楽勝（らくしょう） vitória fácil" },
+    { k:"花", u:"6", s:{pt:"flor", en:"flower", es:"flor"}, h:"はな", r:"hana", ke:"花（はな） flor / 花火（はなび） fogos de artifício", oe:"カ (ka) - 花瓶（かびん） vaso de flores / 生け花（いけばな） ikebana" },
+    { k:"映", u:"6", s:{pt:"refletir/projetar", en:"reflect/project", es:"reflejar/proyectar"}, h:"うつ.る", r:"utsuru", ke:"映る（うつる） ser refletido / 映す（うつす） projetar", oe:"エイ (ei) - 映画（えいが） filme" },
+    { k:"画", u:"6", s:{pt:"imagem/traço", en:"picture/stroke", es:"imagen"}, h:"え / かく", r:"e / kaku", ke:"画（え） pintura/desenho", oe:"ガ (ga) - 映画（えいが） filme / カク (kaku) - 計画（けいかく） plano/projeto" },
+    { k:"写", u:"6", s:{pt:"copiar/fotografar", en:"copy/photo", es:"copiar/fotografar"}, h:"うつ.す", r:"utsusu", ke:"写す（うつす） copiar/fotografar / 写る（うつる） ser fotografado", oe:"シャ (sha) - 写真（しゃしん） foto / 写生（しゃせい） desenho do natural" },
+    { k:"真", u:"6", s:{pt:"verdade/puro", en:"truth/pure", es:"verdad"}, h:"ま", r:"ma", ke:"真っ白（まっしろ） branco puro / 真ん中（まんなか） bem no meio", oe:"シン (shin) - 写真（しゃしん） foto / 真実（しんじつ） verdade" }
 ];
 // 2. DADOS AUXILIARES (Usando sua lista exata)
 const countsData = [
